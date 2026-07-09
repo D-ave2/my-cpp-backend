@@ -48,7 +48,8 @@ int main() {
         std::ofstream f4("golden_boot.txt", std::ofstream::trunc); f4.close();
         
         std::cout << "Content-type:text/html\r\n\r\n";
-        std::cout << "<html><head><meta http-equiv='refresh' content='0;url=leaderboard.cgi?username=" << username << "'></head></html>";
+        std::cout << "<html><head><meta http-equiv='refresh' content='0;url=https://my-cpp-backend-api.onrender.com" << username << "'></head></html>";
+
         return 0;
     }
 
@@ -121,8 +122,9 @@ int main() {
     // Sort global standings by overall tournament goals for the Golden Boot table!
     std::sort(global_standings.begin(), global_standings.end(), rankByGoals);
 
-    // HTML Rendering Output
-    std::cout << "<html><head><meta charset='UTF-8'><title>Esports Tournament Arena</title><link rel='stylesheet' href='../stats.css'></head><body>";
+    // HTML Rendering
+    std::cout << "<html><head><meta charset='UTF-8'><title>Esports Tournament Arena</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'></head><body>";
+
     std::cout << "<div class='stats-container' style='background: rgba(0,0,0,0.85); min-height:100vh; padding-bottom: 50px;'>";
     
     std::cout << "<h1 style='color: #FF1493; font-size: 38px; text-shadow: 2px 2px 10px #000; padding-top:25px; margin:0;'>🏆 TOURNAMENT CHAMPIONSHIP STANDINGS 🏆</h1>";
@@ -183,9 +185,11 @@ int main() {
 
     // --- FOOTER CONTROLS ---
     std::cout << "<div style='margin-top:30px; display:flex; gap:20px; justify-content:center;'>";
-    std::cout << "  <a href='../index.html' style='color: #aaa; text-decoration: none; font-weight: bold; border:1px solid #444; padding:10px 20px; border-radius:4px;'>Logout / Return Home</a>";
+     std::cout << "  <a href='https://my-first-web-zhxa.onrender.com' style='color: #aaa; text-decoration: none; font-weight: bold; border:1px solid #444; padding:10px 20px; border-radius:4px;'>Logout / Return Home</a>";
+  
     if (username == "Admin") {
-        std::cout << "  <a href='leaderboard.cgi?username=" << username << "&action=reset' onclick=\"return confirm('Completely reset all tournament progress tables?');\" style='color: white; background-color:#dc3545; text-decoration: none; font-weight: bold; padding:10px 20px; border-radius:4px;'>⚠️ RESET DATABASE</a>";
+        std::cout << "  <a href='https://my-cpp-backend-api.onrender.com" << username << "&action=reset' onclick=\"return confirm('Completely reset all tournament progress tables?');\" style='color: white; background-color:#dc3545; text-decoration: none; font-weight: bold; padding:10px 20px; border-radius:4px;'>⚠️ RESET DATABASE</a>";
+
     }
     std::cout << "</div>";
 
