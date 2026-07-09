@@ -82,14 +82,18 @@ int main() {
                 std::cout << "<p>You have unlocked the soccer lovers portal.</p>";
 		
 		std::cout << "<br><br><br>";
-    std::cout << "<a href='../stats.html' style='background-color: #28a745; color: white; padding: 15px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 8px; display: inline-block;'>NEXT</a>";
+        // NEW CODE (Replace Line 84):
+std::cout << "<a href='https://my-first-web-zhxa.onrender.com" << inputUser << "' style='background-color: #28a745; color: white; padding: 15px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 8px; display: inline-block;'>NEXT</a>";
+
 		
 
             } else {
                 // Denied Access Screen
                 std::cout << "<h1 style='color: red;'>ACCESS DENIED</h1>";
                 std::cout << "<p>Invalid Credentials or unauthorized user.</p>";
-                std::cout << "<br><a href='/index.html' style='color:yellow;'>Try Again</a>";
+                // NEW CODE (Replace Line 90):
+std::cout << "<br><a href='https://my-first-web-zhxa.onrender.com' style='color:yellow;'>Try Again</a>";
+
             }
         }
     } else {
