@@ -59,7 +59,8 @@ int main() {
 
     std::cout << "Content-type:text/html; charset=UTF-8\r\n\r\n";
     // NEW CODE (Replace Line 61):
-std::cout << "<html><head><meta charset='UTF-8'><title>Verification Portal</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'></head><body>";
+    std::cout << "<html><head><meta charset='UTF-8'><title>Verification Portal</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'></head><body>";
+
 
     std::cout << "<div class='stats-container' style='background: rgba(0,0,0,0.9); min-height: 100vh; padding-top: 50px;'>";
     std::cout << "<div style='margin: 30px auto; width: 85%; max-width: 500px; background: #111; padding: 30px; border-radius: 12px; border: 2px solid #FF1493; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5);'>";
@@ -71,7 +72,8 @@ std::cout << "<html><head><meta charset='UTF-8'><title>Verification Portal</titl
         std::cout << "  <p style='color: #aaa; font-size:16px; margin-bottom:25px;'>Welcome back, Tournament Director <strong>" << username << "</strong>.</p>";
         std::cout << "  <div style='margin: 20px 0;'>";
         // NEW CODE (Replace Line 69 - Keep your style settings exactly as they are):
-std::cout << "    <a href='https://my-cpp-backend-api.onrender.com" << username << "' style='display:block; background-color: #28a745; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📝 Launch Match Report Room</a>";
+        std::cout << "    <a href='https://my-cpp-backend-api.onrender.com" << username << "' style='display:block; background-color: #28a745; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📝 Launch Match Report Room</a>";
+
 
         std::cout << "  </div>";
     } 
@@ -82,7 +84,8 @@ std::cout << "    <a href='https://my-cpp-backend-api.onrender.com" << username 
         std::cout << "  <div style='margin: 20px 0;'>";
         // CURRENT CODE (Line 76):
         // NEW CODE (Replace Line 76 - Keep your style settings exactly as they are):
-std::cout << "    <a href='https://my-cpp-backend-api.onrender.com" << username << "' style='display:block; background-color: #007bff; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📊 View Live Leaderboard & Feed</a>";
+        std::cout << "    <a href='https://my-cpp-backend-api.onrender.com" << username << "' style='display:block; background-color: #007bff; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📊 View Live Leaderboard & Feed</a>";
+
 
         std::cout << "  </div>";
     } 
