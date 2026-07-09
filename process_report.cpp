@@ -143,6 +143,7 @@ int main() {
     outfile.close();
 
     // Redirect smoothly back to leaderboard view
-    std::cout << "<html><head><meta http-equiv='refresh' content='0;url=leaderboard.cgi?username=Admin'></head></html>";
+     std::cout << "<html><head><meta http-equiv='refresh' content='0;url=https://my-cpp-backend-api.onrender.com'></head></html>";
+
     return 0;
 }
