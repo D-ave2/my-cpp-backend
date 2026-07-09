@@ -13,7 +13,8 @@ int main() {
         if (pos != std::string::npos) { username = query.substr(pos + 9); }
     }
 
-    std::cout << "<html><head><meta charset='UTF-8'><title>Tournament Brackets</title><link rel='stylesheet' href='../stats.css'></head><body>";
+    std::cout << "<html><head><meta charset='UTF-8'><title>Tournament Brackets</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'></head><body>";
+
     std::cout << "<div class='stats-container'>";
     
     // Generous top pacing layout buffer so your bracket text is fully readable
@@ -25,7 +26,8 @@ int main() {
     std::cout << "<div style='height: 60px;'></div>";
 
     // Direct launch routing connection card
-    std::cout << "<a href='game_gateway.cgi?username=" << username << "' style='background-color: #28a745; color: white; padding: 18px 50px; text-decoration: none; font-size: 20px; font-weight: bold; border-radius: 8px; display: inline-block; box-shadow: 0 6px 12px rgba(0,0,0,0.6); text-transform: uppercase;'>TO-GAME</a>";
+    std::cout << "<a href='https://my-cpp-backend-api.onrender.com" << username << "' style='background-color: #28a745; color: white; padding: 18px 50px; text-decoration: none; font-size: 20px; font-weight: bold; border-radius: 8px; display: inline-block; box-shadow: 0 6px 12px rgba(0,0,0,0.6); text-transform: uppercase;'>TO-GAME</a>";
+
     
     std::cout << "</div></body></html>";
     return 0;
