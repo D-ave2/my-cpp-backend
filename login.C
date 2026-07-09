@@ -83,10 +83,8 @@ int main() {
 		
 		std::cout << "<br><br><br>";
         // NEW CODE (Replace Line 84):
+        // NEW CODE (Replace Line 85 with this):
 std::cout << "<a href='https://my-first-web-zhxa.onrender.com" << inputUser << "' style='background-color: #28a745; color: white; padding: 15px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 8px; display: inline-block;'>NEXT</a>";
-
-		
-
             } else {
                 // Denied Access Screen
                 std::cout << "<h1 style='color: red;'>ACCESS DENIED</h1>";
