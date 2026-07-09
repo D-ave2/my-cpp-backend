@@ -23,7 +23,7 @@ bool isAllowedPlayer(const std::string& user, const std::string& pass) {
     // Official Player list array matching your registration system
     std::vector<std::string> players = {
         "ZIRIWA Patrick", "RWEMA Kyle", "GWIZA Dave", "Owen King", 
-        "HIRWA Davy", "MUGISHA Herve", "CHANCE Prince", "CHRIS Isange"
+        "HIRWA Davy", "MUGISHA Herve", "CHANCE Prince", "CHRIS Isange", "KENNY SHALOM" , "NYIRISHEMA PACCY", "MAOMBI DAVID", "NIYIKIZA FLORIS"
     };
     
     // Default test password for players
@@ -58,7 +58,9 @@ int main() {
     }
 
     std::cout << "Content-type:text/html; charset=UTF-8\r\n\r\n";
-    std::cout << "<html><head><meta charset='UTF-8'><title>Verification Portal</title><link rel='stylesheet' href='../stats.css'></head><body>";
+    // NEW CODE (Replace Line 61):
+std::cout << "<html><head><meta charset='UTF-8'><title>Verification Portal</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'></head><body>";
+
     std::cout << "<div class='stats-container' style='background: rgba(0,0,0,0.9); min-height: 100vh; padding-top: 50px;'>";
     std::cout << "<div style='margin: 30px auto; width: 85%; max-width: 500px; background: #111; padding: 30px; border-radius: 12px; border: 2px solid #FF1493; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5);'>";
 
