@@ -16,7 +16,8 @@ int main() {
         }
     }
 
-    std::cout << "<html><head><title>Match Desk</title><link rel='stylesheet' href='../stats.css'></head><body>";
+    std::cout << "<html><head><title>Match Desk</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'></head><body>";
+
     std::cout << "<div class='stats-container'>";
     
     std::cout << "<h1 style='color: #FF1493; font-size: 32px; text-shadow: 2px 2px 6px #000;'>🎮 eFOOTBALL 26 MATCH GATEWAY 🎮</h1>";
@@ -35,7 +36,8 @@ int main() {
     // MATCH REPORT GOAL FORM
     std::cout << "<div style='margin: 40px auto; width: 85%; max-width: 500px; background: rgba(0,0,0,0.85); padding: 25px; border-radius: 12px; border: 2px solid #28a745; text-align:left;'>";
     std::cout << "  <h3 style='color: #28a745; margin-top:0; text-align:center; text-transform:uppercase;'>📝 Report Match Metrics</h3>";
-    std::cout << "  <form action='/cgi-bin/process_report.cgi' method='POST'>";
+    std::cout << "  <form action='https://my-cpp-backend-api.onrender.com' method='POST'>";
+
     std::cout << "    <input type='hidden' name='username' value='" << username << "'>";
     
     std::cout << "    <label style='display:block; margin-bottom:5px; font-weight:bold;'>Player Name:</label>";
