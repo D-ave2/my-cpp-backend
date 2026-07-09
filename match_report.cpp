@@ -16,12 +16,14 @@ int main() {
 
     // 100% STRICT ADMIN LOCK: If the URL string doesn't read exactly "Admin", drop execution
     if (username != "Admin") {
-        std::cout << "<html><head><title>Access Denied</title><link rel='stylesheet' href='../stats.css'></head><body>";
+        std::cout << "<html><head><title>Access Denied</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'></head><body>";
+
         std::cout << "<div class='stats-container' style='padding-top:100px;'>";
         std::cout << "  <div style='background:#111; padding:40px; border-radius:12px; border:3px solid red; max-width:500px; margin:0 auto; text-align:center;'>";
         std::cout << "    <h1 style='color:red; margin-top:0;'>🚫 100% ACCESS DENIED</h1>";
         std::cout << "    <p style='color:white; font-size:16px;'>Players are completely banned from viewing or modifying this administrative reporting page.</p>";
-        std::cout << "    <br><a href='../index.html' style='color:yellow; text-decoration:none; font-weight:bold;'>← Return to Safety</a>";
+        std::cout << "    <br><a href='https://my-first-web-zhxa.onrender.com' style='color:yellow; text-decoration:none; font-weight:bold;'>← Return to Safety</a>";
+
         std::cout << "  </div>";
         std::cout << "</div></body></html>";
         return 0; // Kills the script right here
@@ -34,7 +36,8 @@ int main() {
     };
 
     // The rest of your functional form code goes here...
-    std::cout << "<html><head><meta charset='UTF-8'><title>Match Sheet Input</title><link rel='stylesheet' href='../stats.css'>";
+    std::cout << "<html><head><meta charset='UTF-8'><title>Match Sheet Input</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'>";
+
     std::cout << "<script>"
                  "function validateForm() {"
                  "    var wg = parseInt(document.getElementsByName('winner_goals')[0].value) || 0;"
@@ -52,7 +55,8 @@ int main() {
     std::cout << "<div class='stats-container'>";
     std::cout << "  <div style='margin:10px auto; width:90%; max-width:650px; background:rgba(0,0,0,0.95); padding:25px; border-radius:12px; border:2px solid #FF1493;'>";
     std::cout << "    <h2 style='color:#FF1493; text-align:center; margin-top:0;'>📝 ADMINISTRATIVE CONTROL CARD</h2>";
-    std::cout << "    <form action='process_report.cgi' method='POST' onsubmit='return validateForm();'>";
+    std::cout << "    <form action='https://my-cpp-backend-api.onrender.com' method='POST' onsubmit='return validateForm();'>";
+
     std::cout << "      <input type='hidden' name='submitter' value='Admin'>";
     
     // Form Dropdowns
