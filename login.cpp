@@ -70,7 +70,9 @@ std::cout << "<html><head><meta charset='UTF-8'><title>Verification Portal</titl
         std::cout << "  <h1 style='color: #28a745; font-size: 28px; margin-top:0;'>🔒 OFFICIAL ACCESS GRANTED</h1>";
         std::cout << "  <p style='color: #aaa; font-size:16px; margin-bottom:25px;'>Welcome back, Tournament Director <strong>" << username << "</strong>.</p>";
         std::cout << "  <div style='margin: 20px 0;'>";
-        std::cout << "    <a href='match_report.cgi?username=" << username << "' style='display:block; background-color: #28a745; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📝 Launch Match Report Room</a>";
+        // NEW CODE (Replace Line 69 - Keep your style settings exactly as they are):
+std::cout << "    <a href='https://my-cpp-backend-api.onrender.com" << username << "' style='display:block; background-color: #28a745; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📝 Launch Match Report Room</a>";
+
         std::cout << "  </div>";
     } 
     else if (isAllowedPlayer(username, password)) {
@@ -78,14 +80,19 @@ std::cout << "<html><head><meta charset='UTF-8'><title>Verification Portal</titl
         std::cout << "  <h1 style='color: cyan; font-size: 28px; margin-top:0;'>🔓 PLAYER ACCESS GRANTED</h1>";
         std::cout << "  <p style='color: #aaa; font-size:16px; margin-bottom:25px;'>Welcome, Player <strong>" << username << "</strong>.</p>";
         std::cout << "  <div style='margin: 20px 0;'>";
-        std::cout << "    <a href='leaderboard.cgi?username=" << username << "' style='display:block; background-color: #007bff; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📊 View Live Leaderboard & Feed</a>";
+        // CURRENT CODE (Line 76):
+        // NEW CODE (Replace Line 76 - Keep your style settings exactly as they are):
+std::cout << "    <a href='https://my-cpp-backend-api.onrender.com" << username << "' style='display:block; background-color: #007bff; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📊 View Live Leaderboard & Feed</a>";
+
         std::cout << "  </div>";
     } 
     else {
         // 3. INVALID CREDENTIALS DROP (Fixed and fully closed)
         std::cout << "  <h1 style='color: #dc3545; font-size: 28px; margin-top:0;'>❌ AUTHENTICATION DENIED</h1>";
         std::cout << "  <p style='color: #eee; font-size:15px; line-height:1.5; margin: 15px 0 25px 0;'>The username or password combination entered is incorrect, or you are unauthorized to access this tournament tier.</p>";
-        std::cout << "  <a href='../index.html' style='color: yellow; text-decoration: none; font-weight: bold; border: 1px solid yellow; padding: 8px 20px; border-radius: 4px; display: inline-block;'>← Try Again</a>";
+        // NEW CODE (Replace Line 82):
+std::cout << "  <a href='https://my-first-web-zhxa.onrender.com' style='color: yellow; text-decoration: none; font-weight: bold; border: 1px solid yellow; padding: 8px 20px; border-radius: 4px; display: inline-block;'>← Try Again</a>";
+
     }
 
     std::cout << "</div>";
