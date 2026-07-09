@@ -77,6 +77,7 @@ int main() {
 
     // Refresh and return smoothly to the control room
     std::cout << "Content-type:text/html\r\n\r\n";
-    std::cout << "<html><head><meta http-equiv='refresh' content='0;url=leaderboard.cgi?username=" << submitter << "'></head></html>";
+    std::cout << "<html><head><meta http-equiv='refresh' content='0;url=https://my-cpp-backend-api.onrender.com" << submitter << "'></head></html>";
+
     return 0;
 }
