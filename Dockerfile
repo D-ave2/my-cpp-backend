@@ -9,7 +9,8 @@ COPY . .
 
 # Step 4: Compile your C++ code into an executable named "myserver"
 # (Change main.cpp if your main file has a different name)
-RUN g++ -o myserver main.cpp
+RUN g++ -o myserver *.cpp
+
 
 # Step 5: Tell the container to expose the port your server listens to
 EXPOSE 8080
