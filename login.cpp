@@ -1,101 +1,92 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <cstdlib>
-#include <algorithm>
+#include <sstream>
+#include <vector>
 
-// Helper function to decode URL formatting (e.g., turning '+' back into spaces)
+// Helper function to decode URL-encoded form strings
 std::string urlDecode(std::string str) {
     std::string ret;
-    char ch;
-    int i;
+    char ch; int i;
     for (size_t p = 0; p < str.length(); p++) {
-        if (str[p] == '+') {
-            ret += ' ';
-        } else if (str[p] == '%') {
+        if (str[p] == '+') ret += ' ';
+        else if (str[p] == '%') {
             sscanf(str.substr(p + 1, 2).c_str(), "%x", &i);
-            ch = static_cast<char>(i);
-            ret += ch;
-            p += 2;
-        } else {
-            ret += str[p];
-        }
+            ch = static_cast<char>(i); ret += ch; p += 2;
+        } else ret += str[p];
     }
     return ret;
 }
 
-int main() {
-    // 1. Tell the browser we are rendering an HTML response page
-    std::cout << "Content-type:text/html\r\n\r\n";
-    std::cout << "<html><head><title>Access Control</title></head><body style='background:black; color:white; text-align:center; font-family:sans-serif; margin-top:100px;'>";
-
-
-    // 2. Allowed users list
-    std::vector<std::string> allowed_users = {
+// Function checking if username belongs to the official team list
+bool isAllowedPlayer(const std::string& user, const std::string& pass) {
+    // Official Player list array matching your registration system
+    std::vector<std::string> players = {
         "ZIRIWA Patrick", "RWEMA Kyle", "GWIZA Dave", "Owen King", 
-        "HIRWA Davy", "MUGISHA Herve", "CHANCE Prince", "CHRIS Isange", 
-        "GOD Seba", "KENNY Shalom", "NIYIKIZA Floris", "DALTON RUBANGURA", "PACCY SHEMA"
+        "HIRWA Davy", "MUGISHA Herve", "CHANCE Prince", "CHRIS Isange"
     };
+    
+    // Default test password for players
+    if (pass != "player123") return false;
 
-    // 3. Get form data via Standard Input
-    char* contentLengthStr = std::getenv("CONTENT_LENGTH");
-    if (contentLengthStr != nullptr) {
-        int length = std::stoi(contentLengthStr);
-        std::string rawData = "";
-        char ch;
-        for (int i = 0; i < length; ++i) {
-            std::cin.get(ch);
-            rawData += ch;
-        }
+    for (const auto& player : players) {
+        if (player == user) return true;
+    }
+    return false;
+}
 
-        // rawData looks like: username=ZIRIWA+Patrick&password=SOCCER_LOVERS
-        std::string userParam = "username=";
-        std::string passParam = "password=";
+int main() {
+    std::string username = "";
+    std::string password = "";
+    
+    char* lenStr = std::getenv("CONTENT_LENGTH");
+    if (lenStr != nullptr) {
+        int length = std::stoi(lenStr);
+        std::string data = ""; char ch;
+        for (int i = 0; i < length; ++i) { std::cin.get(ch); data += ch; }
         
-        size_t userPos = rawData.find(userParam);
-        size_t passPos = rawData.find(passParam);
-
-        if (userPos != std::string::npos && passPos != std::string::npos) {
-            // Extract and clean the Username
-            size_t userStart = userPos + userParam.length();
-            std::string rawUser = rawData.substr(userStart, passPos - userStart - 1);
-            std::string inputUser = urlDecode(rawUser);
-
-            // Extract and clean the Password
-            size_t passStart = passPos + passParam.length();
-            std::string rawPass = rawData.substr(passStart);
-            std::string inputPass = urlDecode(rawPass);
-
-            // 4. Verification Logic
-            bool userFound = false;
-            for (const auto& user : allowed_users) {
-                if (inputUser == user) {
-                    userFound = true;
-                    break;
-                }
-            }
-
-            if (userFound && inputPass == "SOCCER_LOVERS") {
-                // Successful Access Screen
-                std::cout << "<h1 style='color: #FF1493;'>ACCESS GRANTED</h1>";
-                std::cout << "<h2>Welcome to the Room, " << inputUser << "!</h2>";
-                std::cout << "<p>You have unlocked the soccer lovers portal.</p>";
-		
-		std::cout << "<br><br><br>";
-    std::cout << "<a href='../stats.html' style='background-color: #28a745; color: white; padding: 15px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 8px; display: inline-block;'>NEXT</a>";
-		
-
-            } else {
-                // Denied Access Screen
-                std::cout << "<h1 style='color: red;'>ACCESS DENIED</h1>";
-                std::cout << "<p>Invalid Credentials or unauthorized user.</p>";
-                std::cout << "<br><a href='/index.html' style='color:yellow;'>Try Again</a>";
-            }
+        std::stringstream ss(data); std::string segment;
+        while (std::getline(ss, segment, '&')) {
+            size_t eq = segment.find('=');
+            if (eq == std::string::npos) continue;
+            std::string key = segment.substr(0, eq);
+            std::string val = urlDecode(segment.substr(eq + 1));
+            
+            if (key == "username") username = val;
+            if (key == "password") password = val;
         }
-    } else {
-        std::cout << "<h1>System Error: No input data detected.</h1>";
     }
 
-    std::cout << "</body></html>";
+    std::cout << "Content-type:text/html; charset=UTF-8\r\n\r\n";
+    std::cout << "<html><head><meta charset='UTF-8'><title>Verification Portal</title><link rel='stylesheet' href='../stats.css'></head><body>";
+    std::cout << "<div class='stats-container' style='background: rgba(0,0,0,0.9); min-height: 100vh; padding-top: 50px;'>";
+    std::cout << "<div style='margin: 30px auto; width: 85%; max-width: 500px; background: #111; padding: 30px; border-radius: 12px; border: 2px solid #FF1493; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5);'>";
+
+    // ROLE SEGREGATION FLOW
+    if (username == "Admin" && password == "AdminPass123!") {
+        // 1. NEUTRAL REFEREE / ADMIN ACCESS 
+        std::cout << "  <h1 style='color: #28a745; font-size: 28px; margin-top:0;'>🔒 OFFICIAL ACCESS GRANTED</h1>";
+        std::cout << "  <p style='color: #aaa; font-size:16px; margin-bottom:25px;'>Welcome back, Tournament Director <strong>" << username << "</strong>.</p>";
+        std::cout << "  <div style='margin: 20px 0;'>";
+        std::cout << "    <a href='match_report.cgi?username=" << username << "' style='display:block; background-color: #28a745; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📝 Launch Match Report Room</a>";
+        std::cout << "  </div>";
+    } 
+    else if (isAllowedPlayer(username, password)) {
+        // 2. READ-ONLY PLAYER VIEWER ACCESS
+        std::cout << "  <h1 style='color: cyan; font-size: 28px; margin-top:0;'>🔓 PLAYER ACCESS GRANTED</h1>";
+        std::cout << "  <p style='color: #aaa; font-size:16px; margin-bottom:25px;'>Welcome, Player <strong>" << username << "</strong>.</p>";
+        std::cout << "  <div style='margin: 20px 0;'>";
+        std::cout << "    <a href='leaderboard.cgi?username=" << username << "' style='display:block; background-color: #007bff; color: white; padding: 15px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; text-transform:uppercase; box-shadow: 0 3px 6px rgba(0,0,0,0.2);'>📊 View Live Leaderboard & Feed</a>";
+        std::cout << "  </div>";
+    } 
+    else {
+        // 3. INVALID CREDENTIALS DROP (Fixed and fully closed)
+        std::cout << "  <h1 style='color: #dc3545; font-size: 28px; margin-top:0;'>❌ AUTHENTICATION DENIED</h1>";
+        std::cout << "  <p style='color: #eee; font-size:15px; line-height:1.5; margin: 15px 0 25px 0;'>The username or password combination entered is incorrect, or you are unauthorized to access this tournament tier.</p>";
+        std::cout << "  <a href='../index.html' style='color: yellow; text-decoration: none; font-weight: bold; border: 1px solid yellow; padding: 8px 20px; border-radius: 4px; display: inline-block;'>← Try Again</a>";
+    }
+
+    std::cout << "</div>";
+    std::cout << "</div></body></html>";
     return 0;
 }
