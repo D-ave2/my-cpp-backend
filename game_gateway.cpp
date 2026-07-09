@@ -13,7 +13,8 @@ int main() {
         if (pos != std::string::npos) { username = query.substr(pos + 9); }
     }
 
-    std::cout << "<html><head><meta charset='UTF-8'><title>eFootball 26 Launcher</title><link rel='stylesheet' href='../stats.css'></head><body>";
+    std::cout << "<html><head><meta charset='UTF-8'><title>eFootball 26 Launcher</title><link rel='stylesheet' href='https://my-first-web-zhxa.onrender.com'></head><body>";
+
     std::cout << "<div class='stats-container' style='background: rgba(0,0,0,0.8); min-height:100vh;'>";
     
     std::cout << "<h1 style='color: #FF1493; font-size: 34px; padding-top: 50px; text-shadow: 2px 2px 5px #000;'>🎮 INITIALIZING eFOOTBALL 26 🎮</h1>";
@@ -36,7 +37,8 @@ int main() {
     // PROGRESSION ACTION NAVIGATION BUTTON
     std::cout << "<div style='margin-top: 50px;'>";
     std::cout << "  <h3 style='color: yellow;'>Finished playing your tournament fixture?</h3>";
-    std::cout << "  <a href='match_report.cgi?username=" << username << "' style='background-color: #FF1493; color: white; padding: 14px 40px; text-decoration: none; font-weight: bold; font-size:18px; border-radius: 6px; display: inline-block; box-shadow: 0 4px 10px rgba(255,20,147,0.4);'>GO TO REPORT ROOM →</a>";
+    std::cout << "  <a href='https://my-cpp-backend-api.onrender.com" << username << "' style='background-color: #FF1493; color: white; padding: 14px 40px; text-decoration: none; font-weight: bold; font-size:18px; border-radius: 6px; display: inline-block; box-shadow: 0 4px 10px rgba(255,20,147,0.4);'>GO TO REPORT ROOM →</a>";
+
     std::cout << "</div>";
 
     // AUTOMATED SYSTEM APP LAUNCH SCHEME TRIGGER
